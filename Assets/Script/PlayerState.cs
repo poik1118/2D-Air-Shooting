@@ -279,7 +279,7 @@ public class PlayerState : MonoBehaviour
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");   //Remove Enemy
         for (int index = 0; index < enemies.Length; index++)
         {
-            EnemyState enemyLogic = enemies[index].GetComponent<EnemyState>();
+            Enemy enemyLogic = enemies[index].GetComponent<Enemy>();
             enemyLogic.OnHit(500);
         }
 

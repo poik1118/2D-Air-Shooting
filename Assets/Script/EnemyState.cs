@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyState : MonoBehaviour
+public class Enemy : MonoBehaviour
 {
     public int              enemyScore;
     public float            speed;
