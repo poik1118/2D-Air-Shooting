@@ -276,14 +276,14 @@ public class PlayerState : MonoBehaviour
         boomEffect.SetActive(true);
         Invoke("OffBoomEffect", boomVisibleTime);
 
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");   //Remove Enemy
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         for (int index = 0; index < enemies.Length; index++)
         {
             Enemy enemyLogic = enemies[index].GetComponent<Enemy>();
             enemyLogic.OnHit(500);
         }
 
-        GameObject[] bullets = GameObject.FindGameObjectsWithTag("EnemyBullet");   //Remove Bullet
+        GameObject[] bullets = GameObject.FindGameObjectsWithTag("EnemyBullet");
         for (int index = 0; index < bullets.Length; index++)
         {
             Destroy(bullets[index]);
