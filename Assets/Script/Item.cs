@@ -4,24 +4,18 @@ using UnityEngine;
 
 public class Item : MonoBehaviour
 {
-    public string type;
-    public float itemDropSpeed;
-    Rigidbody2D rg;
+    Rigidbody2D             rigid;
+    
+    public string           type;
+    public float            itemDropSpeed;
 
 
     void Awake()
     {
-        rg = GetComponent<Rigidbody2D>();
-        rg.velocity = Vector2.down * itemDropSpeed;
+        rigid = GetComponent<Rigidbody2D>();
+        rigid.velocity = Vector2.down * itemDropSpeed;
     }
-    void Start()
-    {
-        
-    }
-    void Update()
-    {
 
-    }
     void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject.tag == "Player")

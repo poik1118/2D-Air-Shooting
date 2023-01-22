@@ -5,34 +5,37 @@ using UnityEngine.UI;
 
 public class PlayerState : MonoBehaviour
 {
-    Animator anime;
-    private Rigidbody2D rg;
+    Animator                anime;
+    private Rigidbody2D     rg;
 
-    public bool isTouchTop;
-    public bool isTouchBottom;
-    public bool isTouchRight;
-    public bool isTouchLeft;
-    public bool isHit;
+    public bool             isTouchTop;
+    public bool             isTouchBottom;
+    public bool             isTouchRight;
+    public bool             isTouchLeft;
+    public bool             isHit;
 
-    public int score = 0;
+    public int              score = 0;
 
-    public float speed = 1f;
-    public int HP = 3;
-    public int power = 1;
-    public int maxPower = 5;
-    public float shotSpeed = 20f;
-    public float maxShotSpeed = 0.2f;
-    public float curShotSpeed;
-    public GameObject BulletObjA;
-    public GameObject BulletObjB;
-    public int boom = 0;
-    public int maxBoom = 2;
-    public GameObject boomEffect;
-    public int boomDamage = 500;
-    public float boomVisivleTime = 2f;
-    public bool isBoomTime;
+    public float            speed = 1f;
+    public int              HP = 3;
+    public int              power = 1;
+    public int              maxPower = 5;
+    public float            shotSpeed = 20f;
+    public float            maxShotSpeed = 0.2f;
+    public float            curShotSpeed;
+
+    public GameObject       BulletObjA;
+    public GameObject       BulletObjB;
+
+    public int              boom = 0;
+    public int              maxBoom = 2;
+    public GameObject       boomEffect;
+    public int              boomDamage = 500;
+    public float            boomVisibleTime = 2f;
+    public bool             isBoomTime;
 
     public GameManager manager;
+
 
     void Start()
     {
@@ -139,7 +142,7 @@ public class PlayerState : MonoBehaviour
             Destroy(collision.gameObject);
         }
     }
-    void OffBoomEfect()
+    void OffBoomEffect()
     {
         boomEffect.SetActive(false);
         isBoomTime = false;
@@ -180,73 +183,93 @@ public class PlayerState : MonoBehaviour
         {
             case 1:
                 GameObject bulletC1 = Instantiate(BulletObjA, transform.position, transform.rotation);
+
                 Rigidbody2D rgC1 = bulletC1.GetComponent<Rigidbody2D>();
+
                 rgC1.AddForce(Vector2.up * shotSpeed, ForceMode2D.Impulse);
+
                 break;
 
             case 2:
                 GameObject bulletR2 = Instantiate(BulletObjA, transform.position + Vector3.right * 0.1f, transform.rotation);
                 GameObject bulletL2 = Instantiate(BulletObjA, transform.position + Vector3.left * 0.1f, transform.rotation);
+
                 Rigidbody2D rgR2 = bulletR2.GetComponent<Rigidbody2D>();
                 Rigidbody2D rgL2 = bulletL2.GetComponent<Rigidbody2D>();
+
                 rgR2.AddForce(Vector2.up * shotSpeed, ForceMode2D.Impulse);
                 rgL2.AddForce(Vector2.up * shotSpeed, ForceMode2D.Impulse);
+
                 break;
 
             case 3:
                 GameObject bulletC3 = Instantiate(BulletObjB, transform.position, transform.rotation);
+
                 Rigidbody2D rgC3 = bulletC3.GetComponent<Rigidbody2D>();
+
                 rgC3.AddForce(Vector2.up * shotSpeed, ForceMode2D.Impulse);
+
                 break;
 
             case 4:
                 GameObject bulletR4 = Instantiate(BulletObjA, transform.position + Vector3.right * 0.2f, transform.rotation);
                 GameObject bulletC4 = Instantiate(BulletObjB, transform.position, transform.rotation);
                 GameObject bulletL4 = Instantiate(BulletObjA, transform.position + Vector3.left * 0.2f, transform.rotation);
+
                 Rigidbody2D rgR4 = bulletR4.GetComponent<Rigidbody2D>();
                 Rigidbody2D rgC4 = bulletC4.GetComponent<Rigidbody2D>();
                 Rigidbody2D rgL4 = bulletL4.GetComponent<Rigidbody2D>();
+
                 rgR4.AddForce(Vector2.up * shotSpeed, ForceMode2D.Impulse);
                 rgC4.AddForce(Vector2.up * shotSpeed, ForceMode2D.Impulse);
                 rgL4.AddForce(Vector2.up * shotSpeed, ForceMode2D.Impulse);
+
                 break;
 
             case 5:
                 GameObject bulletR5 = Instantiate(BulletObjB, transform.position + Vector3.right * 0.3f, transform.rotation);
                 GameObject bulletC5 = Instantiate(BulletObjB, transform.position, transform.rotation);
                 GameObject bulletL5 = Instantiate(BulletObjB, transform.position + Vector3.left * 0.3f, transform.rotation);
+
                 Rigidbody2D rgR5 = bulletR5.GetComponent<Rigidbody2D>();
                 Rigidbody2D rgC5 = bulletC5.GetComponent<Rigidbody2D>();
                 Rigidbody2D rgL5 = bulletL5.GetComponent<Rigidbody2D>();
+
                 rgR5.AddForce(Vector2.up * shotSpeed, ForceMode2D.Impulse);
                 rgC5.AddForce(Vector2.up * shotSpeed, ForceMode2D.Impulse);
                 rgL5.AddForce(Vector2.up * shotSpeed, ForceMode2D.Impulse);
+
                 break;
         }
         curShotSpeed = 0;
     }
+
     void Reload()
     {
         curShotSpeed += Time.deltaTime;
     }
+
     void Boom()
     {
         if (!Input.GetKeyDown(KeyCode.X))
             return;
+
         //if (!isBoomTime)
         //    return;
+
         if (boom == 0)
             return;
+
         boom--;
         isBoomTime = true;
         manager.UpdateBoomIcon(boom);
         boomEffect.SetActive(true);
-        Invoke("OffBoomEfect", boomVisivleTime);
+        Invoke("OffBoomEffect", boomVisibleTime);
 
-        GameObject[] enimes = GameObject.FindGameObjectsWithTag("Enemy");   //Remove Enemy
-        for (int index = 0; index < enimes.Length; index++)
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");   //Remove Enemy
+        for (int index = 0; index < enemies.Length; index++)
         {
-            EnemyState enemyLogic = enimes[index].GetComponent<EnemyState>();
+            EnemyState enemyLogic = enemies[index].GetComponent<EnemyState>();
             enemyLogic.OnHit(500);
         }
 

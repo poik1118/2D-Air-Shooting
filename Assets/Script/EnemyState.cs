@@ -4,26 +4,27 @@ using UnityEngine;
 
 public class EnemyState : MonoBehaviour
 {
-    public int enemyscore;
-    public float speed;
-    public float HP;
+    public int              enemyScore;
+    public float            speed;
+    public float            HP;
 
-    public Sprite[] sprites;
+    public Sprite[]         sprites;
+    SpriteRenderer          spriteRenderer;
 
-    SpriteRenderer spriteRenderer;
+    public float            shotSpeed;
+    public float            maxShotSpeed = 0.2f;
+    public float            curShotSpeed;
+    public float            power = 1f;
 
-    public float shotSpeed;
-    public float maxShotSpeed = 0.2f;
-    public float curShotSpeed;
-    public float power = 1f;
-    public GameObject BulletObjA;
-    public GameObject BulletObjB;
-    public GameObject itemCoin;
-    public GameObject itemBoom;
-    public GameObject itemPower;
+    public GameObject       BulletObjA;
+    public GameObject       BulletObjB;
 
+    public GameObject       itemCoin;
+    public GameObject       itemBoom;
+    public GameObject       itemPower;
 
-    public GameObject player;
+    public GameObject       player;
+
 
     void Awake()
     {
@@ -47,7 +48,7 @@ public class EnemyState : MonoBehaviour
         if (HP <= 0)
         {
             PlayerState playerLogic = player.GetComponent<PlayerState>();
-            playerLogic.score += enemyscore;
+            playerLogic.score += enemyScore;
 
             int ran = Random.Range(0, 10);
             if(ran < 5)

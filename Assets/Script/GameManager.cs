@@ -6,17 +6,18 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public GameObject[] enemyObjs;
-    public Transform[] spawnPoints;
+    
+    public GameObject[]     enemyObjs;
+    public Transform[]      spawnPoints;
 
-    public float maxSpawnDelay;
-    public float curSpawnDelay;
+    public float            maxSpawnDelay;
+    public float            curSpawnDelay;
 
-    public GameObject player;
-    public Text scoreText;
-    public Image[] hpImage;
-    public Image[] boomImage;
-    public GameObject gmaeOverSet;
+    public GameObject       player;
+    public Text             scoreText;
+    public Image[]          hpImage;
+    public Image[]          boomImage;
+    public GameObject       gameOverSet;
 
     void Update()
     {
@@ -33,6 +34,7 @@ public class GameManager : MonoBehaviour
         PlayerState playerLogic = player.GetComponent<PlayerState>();
         scoreText.text = string.Format("{0:n0}", playerLogic.score);
     }
+
     void SpawnEnemy()
     {
         int randomEnemy = Random.Range(0, 3);
@@ -59,6 +61,7 @@ public class GameManager : MonoBehaviour
             rg.velocity = new Vector2(0, enemyLogic.speed*(-1));
         }
     }
+
     public void UpdateHPIcon(int HP)
     {
         for (int index = 0; index < 3; index++)
@@ -70,6 +73,7 @@ public class GameManager : MonoBehaviour
             hpImage[index].color = new Color(1, 1, 1, 1);
         }
     }
+
     public void UpdateBoomIcon(int boom)
     {
         for (int index = 0; index < 2; index++)
@@ -81,10 +85,12 @@ public class GameManager : MonoBehaviour
             boomImage[index].color = new Color(1, 1, 1, 1);
         }
     }
+
     public void RespawnPlayer()
     {
         Invoke("RespawnPlayerExe", 2f);
     }
+
     public void RespawnPlayerExe()
     {
         player.transform.position = Vector3.down * 10f;
@@ -93,12 +99,15 @@ public class GameManager : MonoBehaviour
         PlayerState playerLogic = player.GetComponent<PlayerState>();
         playerLogic.isHit = false;
     }
+
     public void GameOver()
     {
-        gmaeOverSet.SetActive(true);
+        gameOverSet.SetActive(true);
     }
+
     public void GameRetry()
     {
         SceneManager.LoadScene("Ingame");
     }
+
 }
