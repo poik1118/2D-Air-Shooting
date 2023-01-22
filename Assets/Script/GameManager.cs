@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     public Image[]          boomImage;
     public GameObject       gameOverSet;
 
+
     void Update()
     {
         curSpawnDelay += Time.deltaTime;
@@ -33,6 +34,7 @@ public class GameManager : MonoBehaviour
 
         PlayerState playerLogic = player.GetComponent<PlayerState>();
         scoreText.text = string.Format("{0:n0}", playerLogic.score);
+
     }
 
     void SpawnEnemy()
@@ -60,6 +62,7 @@ public class GameManager : MonoBehaviour
         {
             rg.velocity = new Vector2(0, enemyLogic.speed*(-1));
         }
+
     }
 
     public void UpdateHPIcon(int HP)
@@ -72,6 +75,7 @@ public class GameManager : MonoBehaviour
         {
             hpImage[index].color = new Color(1, 1, 1, 1);
         }
+
     }
 
     public void UpdateBoomIcon(int boom)
@@ -84,11 +88,13 @@ public class GameManager : MonoBehaviour
         {
             boomImage[index].color = new Color(1, 1, 1, 1);
         }
+
     }
 
     public void RespawnPlayer()
     {
         Invoke("RespawnPlayerExe", 2f);
+
     }
 
     public void RespawnPlayerExe()
@@ -98,16 +104,19 @@ public class GameManager : MonoBehaviour
 
         PlayerState playerLogic = player.GetComponent<PlayerState>();
         playerLogic.isHit = false;
+
     }
 
     public void GameOver()
     {
         gameOverSet.SetActive(true);
+
     }
 
     public void GameRetry()
     {
         SceneManager.LoadScene("Ingame");
+
     }
 
 }
