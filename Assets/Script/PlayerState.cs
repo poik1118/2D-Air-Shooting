@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class PlayerState : MonoBehaviour
 {
     Animator                anime;
-    private Rigidbody2D     rg;
+    private Rigidbody2D     rigid;
 
     public bool             isTouchTop;
     public bool             isTouchBottom;
@@ -39,12 +39,14 @@ public class PlayerState : MonoBehaviour
 
     void Start()
     {
-        rg = gameObject.GetComponent<Rigidbody2D>();
+        rigid = gameObject.GetComponent<Rigidbody2D>();
     }
+
     void Awake()
     {
         anime = GetComponent<Animator>();
     }
+
     void Update()
     {
         Move();
@@ -72,6 +74,7 @@ public class PlayerState : MonoBehaviour
             anime.SetInteger("Input", (int)h);
         }
     }
+
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Border")
@@ -95,6 +98,7 @@ public class PlayerState : MonoBehaviour
                     break;
             }
         }
+
         else if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "EnemyBullet")
         {
             if (isHit)
@@ -113,6 +117,7 @@ public class PlayerState : MonoBehaviour
                 manager.RespawnPlayer();
             }
         }
+
         else if (collision.gameObject.tag == "Item")
         {
             Item item = collision.gameObject.GetComponent<Item>();
@@ -139,14 +144,18 @@ public class PlayerState : MonoBehaviour
                     }
                     break;
             }
+
             Destroy(collision.gameObject);
         }
+
     }
+
     void OffBoomEffect()
     {
         boomEffect.SetActive(false);
         isBoomTime = false;
     }
+
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Border")
@@ -171,6 +180,7 @@ public class PlayerState : MonoBehaviour
             }
         }
     }
+
     void Fire()
     {
         if (!Input.GetKey(KeyCode.Z))
