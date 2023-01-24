@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public float Damege;
+    public float            Damege;
 
     
     private void OnTriggerEnter2D(Collider2D collision)
