@@ -18,10 +18,18 @@ public class BackGround : MonoBehaviour
 
     void Update()
     {
+        Move();
+        Scrolling();  
+    }
+
+    void Move()
+    {
         Vector3 curPos = transform.position;
         Vector3 nextPos = Vector3.down * speed * Time.deltaTime;
         transform.position = curPos + nextPos;
+    }
 
+    void Scrolling(){
         if(sprites[endIndex].position.y < viewHeight * (-1)){
             Vector3 backSpritePos = sprites[startIndex].localPosition;
             Vector3 frontSpritePos = sprites[endIndex].localPosition;
