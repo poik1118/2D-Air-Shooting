@@ -2431,7 +2431,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1386427282}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2453,7 +2453,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7698aa49d7744574e8496da50d88a515, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
+  speed: 3
+  startIndex: 2
+  endIndex: 0
+  sprites:
+  - {fileID: 842813221}
+  - {fileID: 753351159}
+  - {fileID: 1913153912}
 --- !u!1 &1387890500
 GameObject:
   m_ObjectHideFlags: 0
@@ -2862,7 +2868,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1861091447}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2884,7 +2890,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7698aa49d7744574e8496da50d88a515, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
+  speed: 5
+  startIndex: 2
+  endIndex: 0
+  sprites:
+  - {fileID: 953831322}
+  - {fileID: 999213832}
+  - {fileID: 966596251}
 --- !u!1 &1875186903
 GameObject:
   m_ObjectHideFlags: 0
@@ -3190,7 +3202,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2062868307}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3213,6 +3225,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
+  startIndex: 2
+  endIndex: 0
+  sprites:
+  - {fileID: 1193420804}
+  - {fileID: 1426776934}
+  - {fileID: 570883366}
 --- !u!1 &2094291397
 GameObject:
   m_ObjectHideFlags: 0

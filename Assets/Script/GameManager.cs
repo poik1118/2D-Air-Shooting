@@ -44,23 +44,23 @@ public class GameManager : MonoBehaviour
 
         GameObject enemy = Instantiate(enemyObjs[randomEnemy], spawnPoints[randomPoint].position, spawnPoints[randomPoint].rotation);
 
-        Rigidbody2D rg = enemy.GetComponent<Rigidbody2D>();
+        Rigidbody2D rigid = enemy.GetComponent<Rigidbody2D>();
         Enemy enemyLogic = enemy.GetComponent<Enemy>();
         enemyLogic.player = player;
 
         if(randomPoint == 5 || randomPoint == 6)
         {
             enemy.transform.Rotate(Vector3.back * 90);
-            rg.velocity = new Vector2(enemyLogic.speed*(-1), -1);
+            rigid.velocity = new Vector2(enemyLogic.speed*(-1), -1);
         }
         else if (randomPoint == 7 || randomPoint == 8)
         {
             enemy.transform.Rotate(Vector3.forward * 90);
-            rg.velocity = new Vector2(enemyLogic.speed, -1);
+            rigid.velocity = new Vector2(enemyLogic.speed, -1);
         }
         else
         {
-            rg.velocity = new Vector2(0, enemyLogic.speed*(-1));
+            rigid.velocity = new Vector2(0, enemyLogic.speed*(-1));
         }
 
     }
