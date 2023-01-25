@@ -34,7 +34,8 @@ public class PlayerState : MonoBehaviour
     public float            boomVisibleTime = 2f;
     public bool             isBoomTime;
 
-    public GameManager manager;
+    public GameManager      gameManager;
+    public ObjectPool       objectPoolManager;
 
 
     void Start()
@@ -105,16 +106,16 @@ public class PlayerState : MonoBehaviour
                 return;
             isHit = true;
             HP--;
-            manager.UpdateHPIcon(HP);
+            gameManager.UpdateHPIcon(HP);
             gameObject.SetActive(false);
             Destroy(collision.gameObject);
             if (HP == 0)
             {
-                manager.GameOver();
+                gameManager.GameOver();
             }
             else
             {
-                manager.RespawnPlayer();
+                gameManager.RespawnPlayer();
             }
         }
 
@@ -140,7 +141,7 @@ public class PlayerState : MonoBehaviour
                     {
                         boomEffect.SetActive(false);
                         boom++;
-                        manager.UpdateBoomIcon(boom);
+                        gameManager.UpdateBoomIcon(boom);
                     }
                     break;
             }
@@ -193,10 +194,11 @@ public class PlayerState : MonoBehaviour
         {
             case 1:
                 GameObject bulletC1 = Instantiate(BulletObjA, transform.position, transform.rotation);
+                GameObject bullet = objectPoolManager.MakeObj("BulletPlayerA");
 
-                Rigidbody2D rgC1 = bulletC1.GetComponent<Rigidbody2D>();
+                Rigidbody2D rigidC1 = bulletC1.GetComponent<Rigidbody2D>();
 
-                rgC1.AddForce(Vector2.up * shotSpeed, ForceMode2D.Impulse);
+                rigidC1.AddForce(Vector2.up * shotSpeed, ForceMode2D.Impulse);
 
                 break;
 
@@ -204,20 +206,20 @@ public class PlayerState : MonoBehaviour
                 GameObject bulletR2 = Instantiate(BulletObjA, transform.position + Vector3.right * 0.1f, transform.rotation);
                 GameObject bulletL2 = Instantiate(BulletObjA, transform.position + Vector3.left * 0.1f, transform.rotation);
 
-                Rigidbody2D rgR2 = bulletR2.GetComponent<Rigidbody2D>();
-                Rigidbody2D rgL2 = bulletL2.GetComponent<Rigidbody2D>();
+                Rigidbody2D rigidR2 = bulletR2.GetComponent<Rigidbody2D>();
+                Rigidbody2D rigidL2 = bulletL2.GetComponent<Rigidbody2D>();
 
-                rgR2.AddForce(Vector2.up * shotSpeed, ForceMode2D.Impulse);
-                rgL2.AddForce(Vector2.up * shotSpeed, ForceMode2D.Impulse);
+                rigidR2.AddForce(Vector2.up * shotSpeed, ForceMode2D.Impulse);
+                rigidL2.AddForce(Vector2.up * shotSpeed, ForceMode2D.Impulse);
 
                 break;
 
             case 3:
                 GameObject bulletC3 = Instantiate(BulletObjB, transform.position, transform.rotation);
 
-                Rigidbody2D rgC3 = bulletC3.GetComponent<Rigidbody2D>();
+                Rigidbody2D rigidC3 = bulletC3.GetComponent<Rigidbody2D>();
 
-                rgC3.AddForce(Vector2.up * shotSpeed, ForceMode2D.Impulse);
+                rigidC3.AddForce(Vector2.up * shotSpeed, ForceMode2D.Impulse);
 
                 break;
 
@@ -226,13 +228,13 @@ public class PlayerState : MonoBehaviour
                 GameObject bulletC4 = Instantiate(BulletObjB, transform.position, transform.rotation);
                 GameObject bulletL4 = Instantiate(BulletObjA, transform.position + Vector3.left * 0.2f, transform.rotation);
 
-                Rigidbody2D rgR4 = bulletR4.GetComponent<Rigidbody2D>();
-                Rigidbody2D rgC4 = bulletC4.GetComponent<Rigidbody2D>();
-                Rigidbody2D rgL4 = bulletL4.GetComponent<Rigidbody2D>();
+                Rigidbody2D rigidR4 = bulletR4.GetComponent<Rigidbody2D>();
+                Rigidbody2D rigidC4 = bulletC4.GetComponent<Rigidbody2D>();
+                Rigidbody2D rigidL4 = bulletL4.GetComponent<Rigidbody2D>();
 
-                rgR4.AddForce(Vector2.up * shotSpeed, ForceMode2D.Impulse);
-                rgC4.AddForce(Vector2.up * shotSpeed, ForceMode2D.Impulse);
-                rgL4.AddForce(Vector2.up * shotSpeed, ForceMode2D.Impulse);
+                rigidR4.AddForce(Vector2.up * shotSpeed, ForceMode2D.Impulse);
+                rigidC4.AddForce(Vector2.up * shotSpeed, ForceMode2D.Impulse);
+                rigidL4.AddForce(Vector2.up * shotSpeed, ForceMode2D.Impulse);
 
                 break;
 
@@ -241,13 +243,13 @@ public class PlayerState : MonoBehaviour
                 GameObject bulletC5 = Instantiate(BulletObjB, transform.position, transform.rotation);
                 GameObject bulletL5 = Instantiate(BulletObjB, transform.position + Vector3.left * 0.3f, transform.rotation);
 
-                Rigidbody2D rgR5 = bulletR5.GetComponent<Rigidbody2D>();
-                Rigidbody2D rgC5 = bulletC5.GetComponent<Rigidbody2D>();
-                Rigidbody2D rgL5 = bulletL5.GetComponent<Rigidbody2D>();
+                Rigidbody2D rigidR5 = bulletR5.GetComponent<Rigidbody2D>();
+                Rigidbody2D rigidC5 = bulletC5.GetComponent<Rigidbody2D>();
+                Rigidbody2D rigidL5 = bulletL5.GetComponent<Rigidbody2D>();
 
-                rgR5.AddForce(Vector2.up * shotSpeed, ForceMode2D.Impulse);
-                rgC5.AddForce(Vector2.up * shotSpeed, ForceMode2D.Impulse);
-                rgL5.AddForce(Vector2.up * shotSpeed, ForceMode2D.Impulse);
+                rigidR5.AddForce(Vector2.up * shotSpeed, ForceMode2D.Impulse);
+                rigidC5.AddForce(Vector2.up * shotSpeed, ForceMode2D.Impulse);
+                rigidL5.AddForce(Vector2.up * shotSpeed, ForceMode2D.Impulse);
 
                 break;
         }
@@ -272,7 +274,7 @@ public class PlayerState : MonoBehaviour
 
         boom--;
         isBoomTime = true;
-        manager.UpdateBoomIcon(boom);
+        gameManager.UpdateBoomIcon(boom);
         boomEffect.SetActive(true);
         Invoke("OffBoomEffect", boomVisibleTime);
 

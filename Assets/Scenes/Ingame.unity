@@ -988,9 +988,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyObjs:
-  - {fileID: 6034441272501346564, guid: 2e1b27fa3729bdd438ec0464d1f2c4e3, type: 3}
-  - {fileID: 731531794627934365, guid: 96518198215f10a4797bb673a26e05b9, type: 3}
-  - {fileID: 5777547996038536967, guid: 75c6edf14eff5aa42a201fc9adf8760b, type: 3}
+  - 
+  - 
+  - 
   spawnPoints:
   - {fileID: 638761648}
   - {fileID: 752708515}
@@ -1012,7 +1012,8 @@ MonoBehaviour:
   boomImage:
   - {fileID: 913654106}
   - {fileID: 290733623}
-  gameOverCanvas: {fileID: 0}
+  gameOverCanvas: {fileID: 1411682434}
+  objectPoolManager: {fileID: 0}
 --- !u!4 &668185194
 Transform:
   m_ObjectHideFlags: 0
@@ -3164,7 +3165,7 @@ GameObject:
   - component: {fileID: 1869743168}
   - component: {fileID: 1869743167}
   m_Layer: 0
-  m_Name: ObjectPool
+  m_Name: ObjectPoolManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3709,6 +3710,11 @@ PrefabInstance:
       objectReference: {fileID: 576740269}
     - target: {fileID: 618752768426113194, guid: fd110a822012b894db4dd12229b504a9,
         type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 668185193}
+    - target: {fileID: 618752768426113194, guid: fd110a822012b894db4dd12229b504a9,
+        type: 3}
       propertyPath: maxShotSpeed
       value: 0.15
       objectReference: {fileID: 0}
@@ -3717,6 +3723,11 @@ PrefabInstance:
       propertyPath: boomVisivleTime
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 618752768426113194, guid: fd110a822012b894db4dd12229b504a9,
+        type: 3}
+      propertyPath: objectPoolManager
+      value: 
+      objectReference: {fileID: 1869743167}
     - target: {fileID: 618752768426113195, guid: fd110a822012b894db4dd12229b504a9,
         type: 3}
       propertyPath: m_Name

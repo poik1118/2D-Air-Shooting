@@ -68,7 +68,7 @@ public class EnemyState : MonoBehaviour
                 Instantiate(itemBoom, transform.position, itemBoom.transform.rotation);
             }
 
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
     void ReturnSprite()
@@ -79,13 +79,13 @@ public class EnemyState : MonoBehaviour
     {
         if(collision.gameObject.tag == "BorderBullet")
         {
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
         else if(collision.gameObject.tag == "PlayerBullet")
         {
             Bullet bullet = collision.gameObject.GetComponent<Bullet>();
             OnHit(bullet.Damege);
-            Destroy(collision.gameObject);
+            gameObject.SetActive(false);
         }
     }
     void Fire()

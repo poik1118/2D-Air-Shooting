@@ -30,6 +30,8 @@ public class ObjectPool : MonoBehaviour
     GameObject[]            bulletEnemyA;
     GameObject[]            bulletEnemyB;
 
+    GameObject[]            targetPool;
+
     void Awake()
     {
         enemyS =        new GameObject[20];
@@ -46,7 +48,6 @@ public class ObjectPool : MonoBehaviour
         bulletEnemyB =  new GameObject[100];
 
         Generate();
-        MakeObj();
     }
 
     void Generate(){
@@ -99,46 +100,52 @@ public class ObjectPool : MonoBehaviour
 
     public GameObject MakeObj(string type){
         switch(type){
-        // -----[Enemy]-----
+            // -----[Enemy]-----
             case "EnemyS":
-            for(int index = 0; index < enemyS.Length; index++){
-                if(!enemyS[index].activeSelf){
-                    enemyS[index].SetActive(true);
-                    return enemyS[index];
-                }
-            }
+                targetPool = enemyS;
                 break;
             case "EnemyM":
-
+                targetPool = enemyM;
                 break;
-            case "EnemyL":
-
+            case "EnemyL": 
+                targetPool = enemyL;
                 break;
 
-        // -----[Item]-----
+            // -----[Item]-----
             case "ItemCoin":
-
+                targetPool = itemCoin;
                 break;
             case "ItemPower":
-
+                targetPool = itemPower;
                 break;
             case "ItemBoom":
-
+                targetPool = itemBoom;
                 break;
 
-        // -----[Bullet]-----
+            // -----[Bullet]-----
             case "BulletPlayerA":
-
+                targetPool = bulletPlayerA;
                 break;
             case "BulletPlayerB":
-
+                targetPool = bulletPlayerB;
                 break;
             case "BulletEnemyA":
-
+                targetPool = bulletEnemyA;
                 break;
             case "BulletEnemyB":
-
+                targetPool = bulletEnemyB;
                 break;    
         }
+
+        for (int index = 0; index < targetPool.Length; index++){
+            if ( !targetPool[index].activeSelf ){
+                targetPool[index].SetActive(true);
+                return targetPool[index];
+            }
+        }
+
+        return null;
     }
+
+
 }
