@@ -46,6 +46,7 @@ public class ObjectPool : MonoBehaviour
         bulletEnemyB =  new GameObject[100];
 
         Generate();
+        MakeObj();
     }
 
     void Generate(){
@@ -93,6 +94,51 @@ public class ObjectPool : MonoBehaviour
         for(int index = 0; index < bulletEnemyB.Length; index++){
             bulletEnemyB[index] = Instantiate(bulletEnemyB_Prefab);
             bulletEnemyB[index].SetActive(false);
+        }
+    }
+
+    public GameObject MakeObj(string type){
+        switch(type){
+        // -----[Enemy]-----
+            case "EnemyS":
+            for(int index = 0; index < enemyS.Length; index++){
+                if(!enemyS[index].activeSelf){
+                    enemyS[index].SetActive(true);
+                    return enemyS[index];
+                }
+            }
+                break;
+            case "EnemyM":
+
+                break;
+            case "EnemyL":
+
+                break;
+
+        // -----[Item]-----
+            case "ItemCoin":
+
+                break;
+            case "ItemPower":
+
+                break;
+            case "ItemBoom":
+
+                break;
+
+        // -----[Bullet]-----
+            case "BulletPlayerA":
+
+                break;
+            case "BulletPlayerB":
+
+                break;
+            case "BulletEnemyA":
+
+                break;
+            case "BulletEnemyB":
+
+                break;    
         }
     }
 }

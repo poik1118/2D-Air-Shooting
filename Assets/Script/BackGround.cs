@@ -30,7 +30,7 @@ public class BackGround : MonoBehaviour
     }
 
     void Scrolling(){
-        if(sprites[endIndex].position.y < viewHeight * (-1)){
+        if(sprites[endIndex].position.y < viewHeight * (-0.75f)){
             Vector3 backSpritePos = sprites[startIndex].localPosition;
             Vector3 frontSpritePos = sprites[endIndex].localPosition;
             sprites[endIndex].transform.localPosition = backSpritePos + Vector3.up * 10;

@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     public Text             scoreText;
     public Image[]          hpImage;
     public Image[]          boomImage;
-    public GameObject       gameOverSet;
+    public GameObject       gameOverCanvas;
 
 
     void Update()
@@ -93,13 +93,13 @@ public class GameManager : MonoBehaviour
 
     public void RespawnPlayer()
     {
-        Invoke("RespawnPlayerExe", 2f);
+        Invoke("RespawnPlayerExe", 2.0f);
 
     }
 
     public void RespawnPlayerExe()
     {
-        player.transform.position = Vector3.down * 10f;
+        player.transform.position = Vector3.down * 8f;
         player.SetActive(true);
 
         PlayerState playerLogic = player.GetComponent<PlayerState>();
@@ -109,13 +109,13 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        gameOverSet.SetActive(true);
+        gameOverCanvas.SetActive(true);
 
     }
 
     public void GameRetry()
     {
-        SceneManager.LoadScene("Ingame");
+        SceneManager.LoadScene("InGame");
 
     }
 
