@@ -194,7 +194,9 @@ public class PlayerState : MonoBehaviour
         {
             case 1:
                 GameObject bulletC1 = Instantiate(BulletObjA, transform.position, transform.rotation);
+                
                 GameObject bullet = objectPoolManager.MakeObj("BulletPlayerA");
+                bullet.transform.position = transform.position;
 
                 Rigidbody2D rigidC1 = bulletC1.GetComponent<Rigidbody2D>();
 
