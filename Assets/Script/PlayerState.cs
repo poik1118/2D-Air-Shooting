@@ -279,7 +279,7 @@ public class PlayerState : MonoBehaviour
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         for (int index = 0; index < enemies.Length; index++)
         {
-            Enemy enemyLogic = enemies[index].GetComponent<Enemy>();
+            EnemyState enemyLogic = enemies[index].GetComponent<EnemyState>();
             enemyLogic.OnHit(500);
         }
 

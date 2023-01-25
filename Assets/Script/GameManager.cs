@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour
         GameObject enemy = Instantiate(enemyObjs[randomEnemy], spawnPoints[randomPoint].position, spawnPoints[randomPoint].rotation);
 
         Rigidbody2D rigid = enemy.GetComponent<Rigidbody2D>();
-        Enemy enemyLogic = enemy.GetComponent<Enemy>();
+        EnemyState enemyLogic = enemy.GetComponent<EnemyState>();
         enemyLogic.player = player;
 
         if(randomPoint == 5 || randomPoint == 6)
